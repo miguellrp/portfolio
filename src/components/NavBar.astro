@@ -1,0 +1,41 @@
+---
+import { getLangFromURL, useTranslations, getPagePath } from '../i18n/util.ts';
+
+const lang = getLangFromURL(Astro.url);
+const dictionary = useTranslations(lang);
+const { activeSection, language } = Astro.props;
+
+// NAV SECTIONS:
+const homeSection = dictionary('navbar.home') as string;
+const educationSection = dictionary('navbar.education') as string;
+const projectsSection = dictionary('navbar.projects') as string;
+const contactSection = dictionary('navbar.contact') as string;
+---
+<style>
+  nav {
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+    justify-content: center;
+    align-items: center;
+
+    padding: 10px;
+    background-color: var(--secondary-color);
+
+    & a {
+      color: var(--primary-color);
+      cursor: pointer;
+    }
+
+    & a[data-active] {
+      font-weight: bold;
+    }
+  }
+</style>
+
+<nav id='section-navigator'>
+  <a data-active={activeSection == 0} href={getPagePath(language, homeSection)}>{homeSection}</a>
+  <a data-active={activeSection == 1} href={getPagePath(language, educationSection)}>{educationSection}</a>
+  <a data-active={activeSection == 2} href={getPagePath(language, projectsSection)}>{projectsSection}</a>
+  <a data-active={activeSection == 3} href={getPagePath(language, contactSection)}>{contactSection}</a>
+</nav>

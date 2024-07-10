@@ -1,0 +1,77 @@
+/* Dogica font by Roberto Mocci [https://www.dafont.com/dogica.font] */
+@font-face {
+  font-family: 'Dogica';
+  src: url('/fonts/dogicapixel.ttf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dogica';
+  src: url('/fonts/dogicapixelbold.ttf');
+  font-weight: bold;
+}
+
+/* Light Theme ☀️ */
+html[data-theme="light"] {
+  --primary-color: #282c38;
+  --secondary-color: #a248a2;
+  --background-color: #feaec9;
+
+  background-image: url("/images/custom-light-background.svg");
+}
+
+/* Dark Theme 🌚 */
+html[data-theme="dark"] {
+  --primary-color: #feaec9;
+  --secondary-color: #a248a2;
+  --background-color: #282c38;
+
+  background-image: url("/images/custom-dark-background.svg");
+}
+
+* {
+  margin: unset;
+  padding: unset;
+
+  scrollbar-color: var(--primary-color) var(--background-color);
+  scrollbar-width: auto;
+
+  font-family: Dogica;
+  font-size: 13px;
+}
+
+body {
+  color: var(--primary-color);
+  height: 100vh;
+  position: relative;
+
+  & main {
+    padding-bottom: 30px;
+  }
+}
+
+h1 {
+  font-size: 30px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 15px;
+}
+
+p {
+  margin: 0 10px !important;
+}
+
+a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+::selection {
+  color: var(--background-color);
+  background-color: var(--primary-color);
+}

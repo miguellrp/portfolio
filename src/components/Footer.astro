@@ -1,0 +1,28 @@
+---
+import { getLangFromURL, useTranslations } from '../i18n/util.ts';
+
+const lang = getLangFromURL(Astro.url);
+const dictionary = useTranslations(lang);
+const { githubUsername } = Astro.props;
+---
+<style>
+  footer {
+    min-width: 300px;
+    height: 30px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-align: center;
+    text-wrap: balance;
+  }
+</style>
+
+<footer>
+  <p>{dictionary('footer.credits')} <a href={`https://github.com/${githubUsername}`} target='_blank'>@{githubUsername}</a></p>
+</footer>

@@ -1,0 +1,30 @@
+body {
+  & .options-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 10px 13px 15px 13px;
+  }
+
+  & main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    & #section-navigator {
+      margin: 10px auto 15px auto;
+    }
+  
+    & h1, & h2, & h3, & p {
+      text-align: center;
+      text-wrap: balance;
+    }
+  
+    & .coin-shape {
+      margin: 25px auto 40px auto;
+    }
+  }
+}

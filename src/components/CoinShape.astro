@@ -1,0 +1,62 @@
+---
+const { srcFront, altFront, srcBack, altBack} = Astro.props;
+---
+<style>
+  .coin-shape {
+    position: relative;
+
+    min-width: 320px;
+    min-height: 320px;
+
+    & .portrait {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      border-radius: 50%;
+      border: 8px solid var(--secondary-color);
+      cursor: pointer;
+
+      transition: transform 1s ease, opacity .3s linear .15s;
+    }
+
+    & .portrait.front {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    & .portrait.back {
+      opacity: 0;
+      z-index: 1;
+      transform: rotateY(180deg);
+    }
+  }
+</style>
+
+<div class='coin-shape'>
+  <img class='portrait front' src={srcFront} alt={altFront}>
+  <img class='portrait back' src={srcBack} alt={altBack}>
+</div>
+
+<script>
+  const portraitFront = document.querySelector('.portrait.front') as HTMLElement;
+  const portraitBack = document.querySelector('.portrait.back') as HTMLElement;
+
+  portraitFront.addEventListener('click', () => flipCoin('front'));
+  portraitBack.addEventListener('click', () => flipCoin('back'));
+
+  function flipCoin(side:string) {
+    const isFront = side === 'front';
+
+    portraitFront.style.zIndex = isFront ? '1' : '2';
+    portraitFront.style.opacity = isFront ? '0' : '1';
+    portraitFront.style.transform = isFront ? 'rotateY(180deg)' : 'rotateY(0deg)';
+    portraitFront.style.transitionDelay = isFront ? '2000' : 'none';
+
+    portraitBack.style.zIndex = isFront ? '2' : '1';
+    portraitBack.style.opacity = isFront ? '1' : '0';
+    portraitBack.style.transform = isFront ? 'rotateY(0deg)' : 'rotateY(180deg)';
+    portraitBack.style.transitionDelay = isFront ? 'none' : '2000';
+
+  }
+</script>

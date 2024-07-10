@@ -1,0 +1,36 @@
+---
+import { getLangFromURL, useTranslations } from '../i18n/util.ts';
+import LanguagePicker from '../components/LanguagePicker.astro';
+import ThemeIcon from '../components/ThemeIcon.astro';
+import Footer from '../components/Footer.astro';
+
+const lang = getLangFromURL(Astro.url);
+const dictionary = useTranslations(lang);
+---
+<script>
+	import { handleTheme } from '../utils/handlerTheme.ts';
+	handleTheme();
+</script>
+
+<html data-theme='dark'>
+	<head>
+		<meta charset='utf-8' />
+		<link rel='preload' as='image' href='/images/custom-dark-background.svg' />
+		<link rel='preload' as='image' href='/images/custom-light-background.svg' />
+		<link rel='icon' type='image/svg+xml' href='/images/portraitFront.png' />
+		<link rel='stylesheet' href='/src/styles/globals.css' />
+		<slot name='section-css' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+		<meta name='description' content={dictionary('head.description')}>
+		<title>{dictionary('head.title')}</title>
+	</head>
+	<body>
+		<div class='options-group'>
+			<slot name='language-picker' />
+			<ThemeIcon />
+		</div>
+		<slot name='section-content' />
+		<Footer githubUsername='miguellrp' />
+	</body>
+</html>
