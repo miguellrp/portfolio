@@ -1,0 +1,9 @@
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import LanguagePicker from '../components/LanguagePicker.astro';
+
+---
+<LayoutBase>
+  <link slot='section-css' rel='stylesheet' href='/src/styles/index.css' />
+	<LanguagePicker slot='language-picker' activeSection='-1' />
+</LayoutBase>

@@ -1,5 +1,56 @@
 ---
+import ImageTooltip from '../../components/ImageTooltip.astro';
 import LayoutEducation from '../../layouts/LayoutEducation.astro';
+import { getLangFromURL } from '../../i18n/util';
+import Util from '../../utils/Util';
+
+const degree = [
+  {
+    'name': 'Desarrollo de Aplicaciones Web',
+    'studyCenter': 'IES Fernando Wirtz',
+    'startDate': '05/09/2022',
+    'endDate': '21/06/2024',
+  },
+  {
+    'name': 'Programación de Sistemas Informáticos',
+    'studyCenter': 'Fundación Nortempo',
+    'startDate': '10/01/2022',
+    'endDate': '27/07/2022',
+  },
+  {
+    'name': 'Arte Dramático',
+    'studyCenter': 'Escuela Superior de Arte Dramático',
+    'startDate': '07/09/2015',
+    'endDate': '26/07/2019',
+  }
+];
+
+const lang = getLangFromURL(Astro.url);
+const skillsIcons = Util.getSkillsIcons(lang);
 ---
+
 <LayoutEducation>
+  <div class='education-content'>
+    <section class='degree'>
+      <h3>Titulación</h3>
+      <ul>
+        {degree.map((qualification) => (
+          <li>
+            <span class='name'>{qualification.name}</span>
+            {qualification.studyCenter}
+            <span class='date'>{qualification.startDate} - {qualification.endDate}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+    <section class='skills'>
+      <h3>Tecnologías</h3>
+      <div class='icons'>
+        {skillsIcons.map((skillIcon) => (
+          <ImageTooltip srcImage={skillIcon.filepath} altImage={skillIcon.alt} tooltipText={skillIcon.name} />
+        ))}
+      </div>
+    </section>
+  </div>
+  <button onclick='window.open("/files/cv.pdf","_blank")'>Ver CV</button>
 </LayoutEducation>

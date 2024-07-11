@@ -16,6 +16,8 @@ html[data-theme="light"] {
   --primary-color: #282c38;
   --secondary-color: #a248a2;
   --background-color: #feaec9;
+  --contrast-background-color: color-mix(in srgb, #e782a3, transparent 20%);
+  --button-background-color: #fba7fe;
 
   background-image: url("/images/custom-light-background.svg");
 }
@@ -25,6 +27,8 @@ html[data-theme="dark"] {
   --primary-color: #feaec9;
   --secondary-color: #a248a2;
   --background-color: #282c38;
+  --contrast-background-color: color-mix(in srgb, #893c89, transparent 20%);
+  --button-background-color: #fba7fe;;
 
   background-image: url("/images/custom-dark-background.svg");
 }
@@ -42,24 +46,45 @@ html[data-theme="dark"] {
 
 body {
   color: var(--primary-color);
-  height: 100vh;
-  position: relative;
+
+  & .options-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 10px 13px 15px 13px;
+  }
 
   & main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     padding-bottom: 30px;
+  
+    & h1, & h2, & h3, & p {
+      text-align: center;
+      text-wrap: balance;
+    }
+    
+    & #section-navigator {
+      margin: 10px auto 15px auto;
+    }
   }
 }
 
 h1 {
   font-size: 30px;
+  text-align: center;
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 25px;
 }
 
 h3 {
-  font-size: 15px;
+  font-size: 20px;
 }
 
 p {
@@ -69,6 +94,20 @@ p {
 a {
   color: var(--secondary-color);
   text-decoration: none;
+}
+
+button {
+  outline: none;
+  border: 4px outset var(--secondary-color);
+  background-color: var(--button-background-color);
+  padding: 7px;
+
+  font-weight: bold;
+
+  &:active {
+    border: 4px inset var(--secondary-color);
+    background-color: color-mix(in srgb, var(--button-background-color), black 10%);
+  }
 }
 
 ::selection {

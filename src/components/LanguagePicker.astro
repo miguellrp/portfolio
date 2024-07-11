@@ -1,6 +1,6 @@
 ---
-import { languages } from '../i18n/dictionary.ts';
-import { getLangFromURL, useTranslations, getPagePath } from '../i18n/util.ts';
+import { globalDictionary, languages } from '../i18n/dictionary.ts';
+import { getLangFromURL, getTranslations, getPagePath } from '../i18n/util.ts';
 
 const languageSelected = getLangFromURL(Astro.url);
 const { activeSection } = Astro.props;
@@ -8,20 +8,23 @@ const { activeSection } = Astro.props;
 
 function getActiveSectionName(languageSelected: string): string {
   let activeSectionName:string;
-  const dictionarySections = useTranslations(languageSelected);
+  const dictionary = getTranslations(languageSelected, globalDictionary);
 
   switch (activeSection) {
+    case '-1':
+      activeSectionName = normalizeSection(dictionary('navbar.404'));
+      break;
     case '0':
-      activeSectionName = normalizeSection(dictionarySections('navbar.home'));
+      activeSectionName = normalizeSection(dictionary('navbar.home'));
       break;
     case '1':
-      activeSectionName = normalizeSection(dictionarySections('navbar.education'));
+      activeSectionName = normalizeSection(dictionary('navbar.education'));
       break;
     case '2':
-      activeSectionName = normalizeSection(dictionarySections('navbar.projects'));
+      activeSectionName = normalizeSection(dictionary('navbar.projects'));
       break;
     case '4':
-      activeSectionName = normalizeSection(dictionarySections('navbar.contact'));
+      activeSectionName = normalizeSection(dictionary('navbar.contact'));
   }
 
   return activeSectionName;

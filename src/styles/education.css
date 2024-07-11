@@ -1,0 +1,91 @@
+html[data-theme='light'] {
+  --degree-name-color: #c33d75;
+  --study-center-color: color-mix(in srgb, var(--secondary-color), #000 5%);
+}
+
+html[data-theme='dark'] {
+  --degree-name-color: #fff;
+  --study-center-color: color-mix(in srgb, var(--secondary-color), #fff 35%);
+}
+
+.education-content {
+  margin: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  column-gap: 20px;
+  
+  & section {
+    & h3 {
+      margin: 15px auto;
+      text-decoration: underline;
+    }
+
+    & li {
+      display: flex;
+      flex-direction: column;
+      row-gap: 10px;
+      max-width: 400px;
+      padding: 7px;
+      margin-bottom: 30px;
+  
+      background-color: var(--contrast-background-color);
+      box-shadow: 4px 4px 0 1px var(--secondary-color);
+  
+      & .name {
+        font-size: 14px;
+        font-weight: bold;
+        font-style: italic;
+        color: var(--degree-name-color);
+      }
+  
+      & .date {
+        color: var(--study-center-color);
+        text-align: end;
+      }
+    }
+  }
+
+  & .skills {
+    max-width: 400px;
+  
+    & .icons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      column-gap: 25px;
+      row-gap: 20px;
+
+      padding: 25px 0;
+      background-color: var(--contrast-background-color);
+      box-shadow: 4px 4px 0 1px var(--secondary-color);
+    }
+  }
+}
+
+button {
+  margin-top: 15px;
+}
+
+@media (min-width: 1080px) {
+  .education-content {
+    display: flex;
+    flex-direction: row;
+    column-gap: 50px;
+
+    & .icons {
+      margin-top: 25px;
+    }
+  }
+
+  li {
+    max-width: 510px !important;
+  }
+
+  button {
+    margin-top: unset;
+  }
+}

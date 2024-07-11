@@ -1,0 +1,35 @@
+---
+const { srcImage, altImage, tooltipText } = Astro.props;
+---
+<style>
+.image-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  
+  text-align: center;
+  padding: 7px;
+
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+
+  cursor: default;
+  opacity: 0;
+}
+
+.image-tooltip:hover .tooltip-text {
+  opacity: 1;
+}
+</style>
+
+<div class='image-tooltip'>
+  <img src={srcImage} alt={altImage} />
+  <span class='tooltip-text'>{tooltipText}</span>
+</div>

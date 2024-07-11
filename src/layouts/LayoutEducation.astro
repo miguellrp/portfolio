@@ -1,17 +1,19 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
-import { getLangFromURL, useTranslations } from '../i18n/util.ts';
+import { globalDictionary } from '../i18n/dictionary';
+import { getLangFromURL, getTranslations } from '../i18n/util.ts';
 import LanguagePicker from '../components/LanguagePicker.astro';
 import NavBar from '../components/NavBar.astro';
 
 const lang = getLangFromURL(Astro.url);
-const dictionary = useTranslations(lang);
+const dictionary = getTranslations(lang, globalDictionary);
 ---
 <LayoutBase>
-	<link slot='section-css' rel='stylesheet' href='/src/styles/index.css' />
+	<link slot='section-css' rel='stylesheet' href='/src/styles/education.css' />
   <LanguagePicker slot='language-picker' activeSection='1' />
 	<main slot='section-content'>
 		<NavBar language={lang} activeSection='1'/>
 		<h1>{dictionary('education.title')}</h1>
+		<slot />
 	</main>
 </LayoutBase>

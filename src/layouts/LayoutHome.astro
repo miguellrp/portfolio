@@ -1,12 +1,13 @@
 ---
 import LayoutBase from '../layouts/LayoutBase.astro';
-import { getLangFromURL, useTranslations } from '../i18n/util.ts';
+import { globalDictionary } from '../i18n/dictionary';
+import { getLangFromURL, getTranslations } from '../i18n/util.ts';
 import LanguagePicker from '../components/LanguagePicker.astro';
 import NavBar from '../components/NavBar.astro';
 import CoinShape from '../components/CoinShape.astro';
 
 const lang = getLangFromURL(Astro.url);
-const dictionary = useTranslations(lang);
+const dictionary = getTranslations(lang, globalDictionary);
 ---
 <LayoutBase>
 	<link slot='section-css' rel='stylesheet' href='/src/styles/index.css' />
