@@ -73,4 +73,8 @@ export default class Util {
       },
     ];
   }
+
+  public static getStickerPathFrom(stickerName: string, stickerSide: string) {
+    return `/images/projects-previews/stickers/${stickerName}-${stickerSide}.svg`;
+  }
 }

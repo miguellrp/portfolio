@@ -1,0 +1,9 @@
+---
+import LayoutProjects from '../../layouts/LayoutProjects.astro';
+import { getLangFromURL } from '../../i18n/util';
+
+const lang = getLangFromURL(Astro.url);
+---
+
+<LayoutProjects>
+</LayoutProjects>

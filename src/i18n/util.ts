@@ -7,7 +7,7 @@ export function getLangFromURL(url: URL, dictionary = globalDictionary) {
 }
 
 export function getTranslations(lang: string, dictionary: Dictionary) {
-  return function translate(key: keyof typeof dictionary[typeof defaultLang]) {
+  return function translate(key: keyof typeof dictionary[typeof lang]) {
     return dictionary[lang][key] || dictionary[defaultLang][key];
   }
 }

@@ -40,4 +40,5 @@ testem.log
 Thumbs.db
 
 # Aseprite files
-/public/images/languages-pixel-logos/aseprite_files
+/public/images/languages-pixel-logos/aseprite-files
+/public/images/projects-previews/stickers/aseprite-files

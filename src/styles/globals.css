@@ -16,7 +16,7 @@ html[data-theme="light"] {
   --primary-color: #282c38;
   --secondary-color: #a248a2;
   --background-color: #feaec9;
-  --contrast-background-color: color-mix(in srgb, #e782a3, transparent 20%);
+  --contrast-background-color: color-mix(in srgb, #e47298, transparent 20%);
   --button-background-color: #fba7fe;
 
   background-image: url("/images/custom-light-background.svg");
@@ -103,10 +103,11 @@ button {
   padding: 7px;
 
   font-weight: bold;
+  cursor: pointer;
 
   &:active {
     border: 4px inset var(--secondary-color);
-    background-color: color-mix(in srgb, var(--button-background-color), black 10%);
+    background-color: color-mix(in srgb, var(--button-background-color), black 20%);
   }
 }
 

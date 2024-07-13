@@ -70,15 +70,3 @@ function normalizeSection(section: string): string {
     <a href={getPagePath(lang, getActiveSectionName(lang))}><img class={`flag${lang === languageSelected ? ' active' : ''}`} src={`/images/flags/${lang}.svg`} /></a>
   ))}
 </nav>
-<script>
-  const buttonFlags = document.querySelectorAll('#language-picker > button');
-  buttonFlags.forEach((buttonFlag) => buttonFlag.addEventListener('click', () => {
-    restoreFlagsClassLists();
-    buttonFlag.querySelector('.flag').classList.add('active');
-  }));
-
-  function restoreFlagsClassLists() {
-    const flags = document.querySelectorAll('#language-picker > button > .flag');
-    flags.forEach((flag) => flag.classList.remove('active'));
-  }
-</script>

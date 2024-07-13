@@ -1,0 +1,83 @@
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import { globalDictionary } from '../i18n/dictionary';
+import { getLangFromURL, getTranslations } from '../i18n/util.ts';
+import LanguagePicker from '../components/LanguagePicker.astro';
+import NavBar from '../components/NavBar.astro';
+import ProjectPreview from '../components/ProjectPreview.astro';
+import Util from '../utils/Util';
+
+const lang = getLangFromURL(Astro.url);
+const dictionary = getTranslations(lang, globalDictionary);
+
+const projects = [
+  {
+    'name': 'BiblioPocket',
+    'previewImage': '/images/projects-previews/bibliopocket.png',
+    'repositoryLink': 'https://github.com/miguellrp/bibliopocket',
+    'leftSticker': Util.getStickerPathFrom('bibliopocket', 'left'),
+    'rightSticker': Util.getStickerPathFrom('bibliopocket', 'right')
+  },
+  {
+    'name': 'Princesa VS Dragón',
+    'previewImage': '/images/projects-previews/princesa-vs-dragon.png',
+    'repositoryLink': 'https://github.com/miguellrp/princesa-vs-dragon',
+    'webLink': 'https://princesa-vs-dragon.vercel.app/',
+    'leftSticker': Util.getStickerPathFrom('princesa-vs-dragon', 'left'),
+    'rightSticker': Util.getStickerPathFrom('princesa-vs-dragon', 'right')
+  },
+  {
+    'name': 'Dunder Mifflin, this is my friend',
+    'previewImage': '/images/projects-previews/dunder-mifflin-this-is-my-friend.png',
+    'repositoryLink': 'https://github.com/miguellrp/test-afinidad-the-office',
+    'webLink': 'https://dundermifflin-thisismyfriend.vercel.app/',
+    'leftSticker': Util.getStickerPathFrom('dunder-mifflin-this-is-my-friend', 'left'),
+    'rightSticker': Util.getStickerPathFrom('dunder-mifflin-this-is-my-friend', 'right')
+  },
+  {
+    'name': 'mis notas',
+    'previewImage': '/images/projects-previews/mis-notas.png',
+    'repositoryLink': 'https://github.com/miguellrp/mis-notas',
+    'webLink': 'https://misnotas.vercel.app/',
+    'leftSticker': Util.getStickerPathFrom('mis-notas', 'left'),
+    'rightSticker': Util.getStickerPathFrom('mis-notas', 'right')
+  },
+  {
+    'name': 'Un ahorcado inigualable',
+    'previewImage': '/images/projects-previews/un-ahorcado-inigualable.png',
+    'repositoryLink': 'https://github.com/miguellrp/Ahorcado_Inigualable',
+    'webLink': 'https://miguellrp.github.io/Ahorcado_Inigualable/',
+    'leftSticker': Util.getStickerPathFrom('un-ahorcado-inigualable', 'left'),
+    'rightSticker': Util.getStickerPathFrom('un-ahorcado-inigualable', 'right')
+  },
+  {
+    'name': 'Mini-Cesta',
+    'previewImage': '/images/projects-previews/mini-cesta.png',
+    'repositoryLink': 'https://github.com/miguellrp/MiniCesta-GUI',
+    'leftSticker': Util.getStickerPathFrom('mini-cesta', 'left'),
+    'rightSticker': Util.getStickerPathFrom('mini-cesta', 'right'),
+  }
+];
+---
+<LayoutBase>
+	<link slot='head-section-css' rel='stylesheet' href='/src/styles/projects.css' />
+	<meta slot='head-description' name='description' content={dictionary('head.description')}>
+	<title slot='head-title'>{dictionary('head.title')}</title>
+  <LanguagePicker slot='language-picker' activeSection='2' />
+	<main slot='section-content'>
+		<NavBar language={lang} activeSection='2'/>
+		<h1>{dictionary('projects.title')}</h1>
+		<section class='projects-content'>
+			{projects.map((project) => (
+				<ProjectPreview
+					projectName={project.name}
+					srcPreview={project.previewImage}
+					githubRepository={project.repositoryLink}
+					webLink={project.webLink}
+					leftSticker={project.leftSticker}
+					rightSticker={project.rightSticker}
+				/>
+			))}
+		</section>
+	</main>
+</LayoutBase>

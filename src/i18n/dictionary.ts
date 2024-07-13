@@ -35,7 +35,7 @@ export const globalDictionary = {
     'home.portraitAltB': 'Parte B de mi retrato en la que se ve mi rostro real dentro de un círculo delimitado con un borde grueso de color violeta y varias líneas serpenteantes de este mismo color que rodean mi rostro junto con un fondo sólido de un color más rosáceo',
 
     // PERSONAL PROJECTS
-    'personalProjects.title': 'Mis proyectos personales',
+    'projects.title': 'Mis proyectos',
 
     // EDUCATION
     'education.title': 'Mi formación',
@@ -61,7 +61,7 @@ export const globalDictionary = {
     'home.portraitAltB': 'Parte B do meu retrato onde vése a miña faciana real dentro dun círculo delimitado cun borde groso de cor violeta e varias liñas serpenteantes desta mesma cor que rodean a miña faciana xunto cun fondo sólido dunha cor máis rosácea',
 
     // PERSONAL PROJECTS
-    'personalProjects.title': 'Os meus proxectos persoais',
+    'projects.title': 'Os meus proxectos',
 
     // EDUCATION
     'education.title': 'A miña formación',
@@ -87,7 +87,7 @@ export const globalDictionary = {
     'home.portraitAltB': 'Part B of my portrait showing my actual face within a circle delimited with a thick violet border and several meandering lines of the same color surrounding my face along with a solid background of a more pinkish color',
 
     // PERSONAL PROJECTS
-    'personalProjects.title': 'Personal projects',
+    'projects.title': 'My projects',
 
     // EDUCATION
     'education.title': 'Education',

@@ -1,0 +1,119 @@
+---
+const { projectName, srcPreview, altPreview, githubRepository, webLink, leftSticker, rightSticker } = Astro.props;
+
+---
+<style>
+  .project-preview {
+    --screen-width: 164px;
+    --screen-height: 107px;
+    --screen-top: 40px;
+    --screen-left: 29px;
+
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+
+    & .computer-container {
+      position: relative;
+
+      &:hover .image-preview {
+        filter: blur(2px);
+      }
+
+      &:hover .options-project {
+        opacity: 1;
+      }
+    }
+    
+    & .computer {
+      position: relative;
+      width: 254px;
+      z-index: 3;
+    }
+
+    & .computer-screen {
+      position: absolute;
+      display: inline-block;
+      width: var(--screen-width);
+      height: var(--screen-height);
+
+      top: var(--screen-top);
+      left: var(--screen-left);
+      z-index: 1;
+
+      & .image-preview {
+        width: 100%;
+        height: 100%;
+        transition: .3s ease;
+      }
+    }
+
+    & .options-project {
+      position: absolute;
+      width: var(--screen-width);
+      height: var(--screen-height);
+
+      top: var(--screen-top);
+      left: var(--screen-left);
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 7px;
+      z-index: 4;
+
+      transition: .3s ease-out;
+      opacity: 0;
+    }
+  }
+
+  .stickers {
+    & .sticker {
+      position: absolute;
+      top: 0;
+      z-index: 3;
+  
+      cursor: default;
+    }
+
+    & .sticker.left {
+      transform: rotate(-15deg);
+      left: -5px;
+    }
+
+    & .sticker.right {
+      transform: rotate(15deg);
+      right: 25px;
+    }
+  }
+</style>
+
+<div class='project-preview'>
+  <p>{projectName}</p>
+  <div class='computer-container'>
+    <img class='computer' src='/images/pixel-old-computer.svg'>
+    <div class='computer-screen'>
+      <img class='image-preview' src={srcPreview} alt={altPreview}>
+    </div>
+    <div class='options-project'>
+      {githubRepository && (
+        <button class='github' onmouseup={`window.open('${githubRepository}', '_blank')`}>GitHub</button>
+      )}
+      {webLink && (
+        <button class='web' onmouseup={`window.open('${webLink}', '_blank')`}>Web</button>
+      )}
+    </div>
+    <div class='stickers'>
+      {leftSticker && (
+        <img class='sticker left' src={leftSticker} />
+      )}
+      {rightSticker && (
+        <img class='sticker right' src={rightSticker} />
+      )}
+    </div>
+  </div>
+</div>
