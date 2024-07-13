@@ -40,6 +40,9 @@ export const globalDictionary = {
     // EDUCATION
     'education.title': 'Mi formación',
 
+    // CONTACT
+    'contact.title': 'Contacto',
+
     // FOOTER
     'footer.credits': 'Hecho con 🩷 por ',
 
@@ -91,6 +94,9 @@ export const globalDictionary = {
 
     // EDUCATION
     'education.title': 'Education',
+
+    // CONTACT
+    'contact.title': 'Contact',
 
     // FOOTER
     'footer.credits': 'Made with 🩷 by ',

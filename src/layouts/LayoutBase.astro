@@ -1,11 +1,7 @@
 ---
-import { globalDictionary } from '../i18n/dictionary';
-import { getLangFromURL, getTranslations } from '../i18n/util.ts';
 import ThemeIcon from '../components/ThemeIcon.astro';
 import Footer from '../components/Footer.astro';
 
-const lang = getLangFromURL(Astro.url);
-const dictionary = getTranslations(lang, globalDictionary);
 ---
 <script>
 	import { handleTheme } from '../utils/handlerTheme.ts';

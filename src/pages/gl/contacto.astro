@@ -1,0 +1,41 @@
+---
+import { getLangFromURL } from '../../i18n/util';
+import LayoutContact from '../../layouts/LayoutContact.astro';
+
+const lang = getLangFromURL(Astro.url);
+
+const personalLinksData = [
+  {
+    'url': 'mailto:miguelangelromeropedreira@gmail.com',
+    'iconPath': '/images/email-icon.svg',
+    'altText': 'Símbolo dun sobre pechado'
+  },
+  {
+    'url': 'https://www.linkedin.com/in/miguellrp/',
+    'iconPath': '/images/linkeding-icon.svg',
+    'altText': 'Logo da web Linkedin'
+  },
+  {
+    'url': 'https://github.com/miguellrp',
+    'iconPath': '/images/github-icon.svg',
+    'altText': 'Logo da web GitHub'
+  },
+];
+---
+
+<LayoutContact>
+  <label slot='label-name' for='name'>Nome</label>
+  <label slot='label-email' for='email'>Correo electrónico</label>
+  <label slot='label-message' for='message'>Mensaxe</label>
+  <input slot='input-submit' type='submit' name='contact-form' value='Enviar' />
+  <ul slot='other-contact-icons' class='other-contact-icons'>
+    {personalLinksData.map((personalLink) => (
+      <li>
+        <a href={personalLink.url} target='_blank'>
+          <img src={personalLink.iconPath} alt={personalLink.altText} />
+        </a>
+      </li>
+    ))}
+
+  </ul>
+</LayoutContact>

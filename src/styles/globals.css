@@ -96,7 +96,7 @@ a {
   text-decoration: none;
 }
 
-button {
+button, input[type='submit'] {
   outline: none;
   border: 4px outset var(--secondary-color);
   background-color: var(--button-background-color);

@@ -1,0 +1,42 @@
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import { globalDictionary } from '../i18n/dictionary';
+import { getLangFromURL, getTranslations } from '../i18n/util.ts';
+import LanguagePicker from '../components/LanguagePicker.astro';
+import NavBar from '../components/NavBar.astro';
+
+const lang = getLangFromURL(Astro.url);
+const dictionary = getTranslations(lang, globalDictionary);
+
+---
+<LayoutBase>
+	<link slot='head-section-css' rel='stylesheet' href='/src/styles/contact.css' />
+	<meta slot='head-description' name='description' content={dictionary('head.description')}>
+	<title slot='head-title'>{dictionary('head.title')}</title>
+  <LanguagePicker slot='language-picker' activeSection='3' />
+	<main slot='section-content'>
+		<NavBar language={lang} activeSection='3'/>
+		<h1>{dictionary('contact.title')}</h1>
+		<div class='contact-content'>
+			<section class='form-content'>
+				<form name='contact-form' action="https://formsubmit.co/7dae75c7cd835c6ca4be08c745322c57" method="POST">
+					<div class='label-input'>
+						<slot name='label-name' />
+						<input type='text' name='name' id='name' maxlength='60' required />
+					</div>
+					<div class='label-input'>
+						<slot name='label-email' />
+						<input type='email' name='email' id='email' maxlength='120' required />
+					</div>
+					<div class='label-input'>
+						<slot name='label-message' />
+						<textarea name='message' id='message' maxlength='5000' required />
+					</div>
+					<slot name='input-submit' />
+				</form>
+			</section>
+			<hr />
+			<slot name='other-contact-icons' />
+		</div>
+	</main>
+</LayoutBase>
