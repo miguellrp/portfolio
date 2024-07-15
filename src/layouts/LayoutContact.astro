@@ -20,7 +20,7 @@ const dictionary = getTranslations(lang, globalDictionary);
 		<h1>{dictionary('contact.title')}</h1>
 		<div class='contact-content'>
 			<section class='form-content'>
-				<form name='contact-form' action="https://formsubmit.co/7dae75c7cd835c6ca4be08c745322c57" method="POST">
+				<form name='contact-form' data-netlify>
 					<div class='label-input'>
 						<slot name='label-name' />
 						<input type='text' name='name' id='name' maxlength='60' required />
