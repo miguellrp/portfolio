@@ -1,12 +1,18 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import ThemeIcon from '../components/ThemeIcon.astro';
 import Footer from '../components/Footer.astro';
-
 import '/src/styles/globals.css';
 ---
 <script>
-	import { handleTheme } from '../utils/handlerTheme.ts';
+	import { handleTheme, handleToggleClick, setVisibilityIcons } from '../utils/handlerTheme.ts';
+	
 	handleTheme();
+	document.addEventListener('astro:after-swap', handleTheme);
+	document.addEventListener('astro:after-swap', setVisibilityIcons);
+  document.addEventListener('astro:after-swap', () => {
+		document.getElementById('theme-switcher').addEventListener('click', handleToggleClick);
+	});
 </script>
 
 <html data-theme='dark'>
@@ -19,6 +25,7 @@ import '/src/styles/globals.css';
 		<meta name='generator' content={Astro.generator} />
 		<slot name='head-description' />
 		<slot name='head-title' />
+		<ViewTransitions />
 	</head>
 	<body>
 		<div class='options-group'>

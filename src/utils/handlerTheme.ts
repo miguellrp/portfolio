@@ -12,3 +12,26 @@ export function handleTheme() {
   
   window.localStorage.setItem('theme', theme);
 }
+
+export function handleToggleClick() {
+  const rootHTMLTag = document.documentElement;
+  const newTheme = (rootHTMLTag.getAttribute('data-theme') == 'light') ? 'dark' : 'light';
+  
+  rootHTMLTag.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  setVisibilityIcons();
+}
+
+export function setVisibilityIcons () {
+  const rootHTMLTag = document.documentElement;
+  const sunIcon = document.querySelector('.sun') as HTMLElement;
+  const moonIcon = document.querySelector('.moon') as HTMLElement;
+  
+  if (rootHTMLTag.getAttribute('data-theme') === 'dark') {
+    sunIcon.style.display = 'flex';
+    moonIcon.style.display = 'none';
+  } else {
+    sunIcon.style.display = 'none';
+    moonIcon.style.display = 'flex';
+  }
+}

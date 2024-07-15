@@ -41,6 +41,7 @@ Thumbs.db
 
 # Aseprite files
 /public/images/aseprite-files
+/public/images/flags/aseprite-files
 /public/images/languages-pixel-logos/aseprite-files
 /public/images/projects-previews/stickers/aseprite-files
 # Local Netlify folder

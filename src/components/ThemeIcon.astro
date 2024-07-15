@@ -37,30 +37,7 @@ const iconsColor = '#a248a2';
 </button>
 
 <script>
-  const rootHTMLTag = document.documentElement;
-
+  import { handleToggleClick, setVisibilityIcons } from '../utils/handlerTheme';
   setVisibilityIcons();
-  
-  const handleToggleClick = () => {
-    const newTheme = (rootHTMLTag.getAttribute('data-theme') == 'light') ? 'dark' : 'light';
-    
-    rootHTMLTag.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-    setVisibilityIcons();
-  }
-
-  function setVisibilityIcons () {
-    const sunIcon = document.querySelector('.sun') as HTMLElement;
-    const moonIcon = document.querySelector('.moon') as HTMLElement;
-    
-    if (rootHTMLTag.getAttribute('data-theme') === 'dark') {
-      sunIcon.style.display = 'flex';
-      moonIcon.style.display = 'none';
-    } else {
-      sunIcon.style.display = 'none';
-      moonIcon.style.display = 'flex';
-    }
-  }
-
   document.getElementById('theme-switcher').addEventListener('click', handleToggleClick);
 </script>

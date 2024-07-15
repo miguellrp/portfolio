@@ -4,7 +4,6 @@ import { globalDictionary } from '../i18n/dictionary';
 import { getLangFromURL, getTranslations } from '../i18n/util.ts';
 import LanguagePicker from '../components/LanguagePicker.astro';
 import NavBar from '../components/NavBar.astro';
-
 import '/src/styles/contact.css';
 
 const lang = getLangFromURL(Astro.url);
@@ -20,7 +19,7 @@ const dictionary = getTranslations(lang, globalDictionary);
 		<h1>{dictionary('contact.title')}</h1>
 		<div class='contact-content'>
 			<section class='form-content'>
-				<form name='contact-form' data-netlify>
+				<form name='contact-form' data-netlify='true'>
 					<div class='label-input'>
 						<slot name='label-name' />
 						<input type='text' name='name' id='name' maxlength='60' required />

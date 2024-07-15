@@ -8,73 +8,78 @@ html[data-theme='dark'] {
   --study-center-color: color-mix(in srgb, var(--secondary-color), #fff 35%);
 }
 
-.education-content {
-  margin: 20px;
+main {
+  padding-bottom: unset !important;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  column-gap: 20px;
+  & .education-content {
+    margin: 20px auto 0 auto;
   
-  & section {
-    & h3 {
-      margin: 15px auto;
-      text-decoration: underline;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    column-gap: 20px;
+    
+    & section {
+      & h3 {
+        margin: 15px auto;
+        text-decoration: underline;
+      }
+  
+      & li {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        max-width: 400px;
+        padding: 7px;
+        margin-bottom: 30px;
+    
+        background-color: var(--contrast-background-color);
+        box-shadow: 4px 4px 0 1px var(--secondary-color);
+    
+        & .name {
+          font-size: 14px;
+          font-weight: bold;
+          font-style: italic;
+          color: var(--degree-name-color);
+        }
+    
+        & .date {
+          color: var(--study-center-color);
+          text-align: end;
+        }
+      }
     }
-
-    & li {
-      display: flex;
-      flex-direction: column;
-      row-gap: 10px;
+  
+    & .skills {
       max-width: 400px;
-      padding: 7px;
-      margin-bottom: 30px;
+    
+      & .icons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        column-gap: 25px;
+        row-gap: 20px;
   
-      background-color: var(--contrast-background-color);
-      box-shadow: 4px 4px 0 1px var(--secondary-color);
-  
-      & .name {
-        font-size: 14px;
-        font-weight: bold;
-        font-style: italic;
-        color: var(--degree-name-color);
+        padding: 25px 0;
+        background-color: var(--contrast-background-color);
+        box-shadow: 4px 4px 0 1px var(--secondary-color);
       }
-  
-      & .date {
-        color: var(--study-center-color);
-        text-align: end;
-      }
-    }
-  }
-
-  & .skills {
-    max-width: 400px;
-  
-    & .icons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      column-gap: 25px;
-      row-gap: 20px;
-
-      padding: 25px 0;
-      background-color: var(--contrast-background-color);
-      box-shadow: 4px 4px 0 1px var(--secondary-color);
     }
   }
 }
 
 .resume-button {
-  margin-top: 15px;
+  margin-top: 30px;
 }
 
 @media (min-width: 1080px) {
   .education-content {
     display: flex;
-    flex-direction: row;
-    column-gap: 50px;
+    flex-direction: row !important;
+    align-items: start !important;
+    column-gap: 50px !important;
 
     & .icons {
       margin-top: 25px;
@@ -85,7 +90,7 @@ html[data-theme='dark'] {
     max-width: 510px !important;
   }
 
-  button {
+  .resume-button {
     margin-top: unset;
   }
 }

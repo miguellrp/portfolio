@@ -30,27 +30,25 @@ const skillsIcons = Util.getSkillsIcons(lang);
 ---
 
 <LayoutEducation>
-  <div class='education-content'>
-    <section class='degree'>
-      <h3>Degree</h3>
-      <ul>
-        {degree.map((qualification) => (
-          <li>
-            <span class='name'>{qualification.name}</span>
-            {qualification.studyCenter}
-            <span class='date'>{qualification.startDate} - {qualification.endDate}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
-    <section class='skills'>
-      <h3>Skills</h3>
-      <div class='icons'>
-        {skillsIcons.map((skillIcon) => (
-          <ImageTooltip srcImage={skillIcon.filepath} altImage={skillIcon.alt} tooltipText={skillIcon.name} />
-        ))}
-      </div>
-    </section>
-  </div>
-  <button class='resume-button' onclick='window.open("/files/en_cv.pdf","_blank")'>View resume</button>
+  <section slot='degree' class='degree'>
+    <h3>Degree</h3>
+    <ul>
+      {degree.map((qualification) => (
+        <li>
+          <span class='name'>{qualification.name}</span>
+          {qualification.studyCenter}
+          <span class='date'>{qualification.startDate} - {qualification.endDate}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+  <section slot='skills' class='skills'>
+    <h3>Skills</h3>
+    <div class='icons'>
+      {skillsIcons.map((skillIcon) => (
+        <ImageTooltip srcImage={skillIcon.filepath} altImage={skillIcon.alt} tooltipText={skillIcon.name} />
+      ))}
+    </div>
+  </section>
+  <button slot='resume-button' class='resume-button' onclick='window.open("/files/en_cv.pdf","_blank")'>View resume</button>
 </LayoutEducation>

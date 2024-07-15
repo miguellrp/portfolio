@@ -16,6 +16,10 @@ const dictionary = getTranslations(lang, globalDictionary);
 	<main slot='section-content'>
 		<NavBar language={lang} activeSection='1'/>
 		<h1>{dictionary('education.title')}</h1>
-		<slot />
+		<div slot='education-content' class='education-content'>
+			<slot name='degree' />
+			<slot name='skills' />
+		</div>
+		<slot name='resume-button' />
 	</main>
 </LayoutBase>

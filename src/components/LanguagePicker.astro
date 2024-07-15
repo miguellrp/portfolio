@@ -54,9 +54,14 @@ function normalizeSection(section: string): string {
       cursor: pointer;
 
       & .flag {
+        width: 27px;
         height: 20px;
         border-radius: 5px;
         opacity: .3;
+
+        &:hover {
+          opacity: .7;
+        }
       }
 
       & .flag.active {
@@ -67,6 +72,6 @@ function normalizeSection(section: string): string {
 </style>
 <nav id='language-picker'>
   {Object.entries(languages).map(([lang,]) => (
-    <a href={getPagePath(lang, getActiveSectionName(lang))}><img class={`flag${lang === languageSelected ? ' active' : ''}`} src={`/images/flags/${lang}.svg`} /></a>
+    <a href={getPagePath(lang, getActiveSectionName(lang))}><img class={`flag${lang === languageSelected ? ' active' : ''}`} src={`/images/flags/${lang}.png`} /></a>
   ))}
 </nav>
