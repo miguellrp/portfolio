@@ -9,7 +9,7 @@ const lang = getLangFromURL(Astro.url);
 const dictionary = getTranslations(lang, globalDictionary);
 ---
 <LayoutBase>
-	<link slot='head-section-css' rel='stylesheet' href='/src/styles/education.css' />
+	<link slot='head-section-css' rel='stylesheet' type='text/css' href='/src/styles/education.css' />
 	<meta slot='head-description' name='description' content={dictionary('head.description')}>
 	<title slot='head-title'>{dictionary('head.title')}</title>
   <LanguagePicker slot='language-picker' activeSection='1' />
