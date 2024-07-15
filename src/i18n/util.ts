@@ -1,9 +1,13 @@
 import type { Dictionary } from './dictionary.ts';
-import { defaultLang, globalDictionary } from './dictionary.ts';
+import { defaultLang } from './dictionary.ts';
 
-export function getLangFromURL(url: URL, dictionary = globalDictionary) {
-  const [, lang] = url.pathname.split('/');
-  return lang as keyof typeof dictionary || defaultLang;
+export function getLangFromURL(url: URL) {
+  let [, lang] = url.pathname.split('/');
+  if (lang !== 'es' && lang !== 'gl' && lang !== 'en') {
+    lang = defaultLang;
+  }
+
+  return lang;
 }
 
 export function getTranslations(lang: string, dictionary: Dictionary) {

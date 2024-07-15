@@ -1,10 +1,15 @@
 ---
-const { srcImage, altImage, tooltipText } = Astro.props;
+const { srcImage, altImage, tooltipText, urlLink } = Astro.props;
+const isButton = urlLink !== undefined;
 ---
 <style>
 .image-tooltip {
   position: relative;
   display: inline-block;
+}
+
+.pointer {
+  cursor: pointer
 }
 
 .tooltip-text {
@@ -24,12 +29,19 @@ const { srcImage, altImage, tooltipText } = Astro.props;
   opacity: 0;
 }
 
+.pointer {
+  & .tooltip-text {
+    width: 150px;
+  }
+}
+
 .image-tooltip:hover .tooltip-text {
   opacity: 1;
 }
 </style>
 
-<div class='image-tooltip'>
-  <img src={srcImage} alt={altImage} />
+<div class={`image-tooltip${isButton ? ' pointer' : ''}`}>
+  {urlLink && <img src={srcImage} alt={altImage} onclick={`window.open('${urlLink}', '_blank')`}/>}
+  {!urlLink && <img src={srcImage} alt={altImage} />}
   <span class='tooltip-text'>{tooltipText}</span>
 </div>

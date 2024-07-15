@@ -1,11 +1,46 @@
 ---
-import LayoutBase from '../layouts/LayoutBase.astro';
-import LanguagePicker from '../components/LanguagePicker.astro';
+import { defaultLang, pageNotFoundContent } from '../i18n/dictionary';
+import { getTranslations } from '../i18n/util';
+import Footer from '../components/Footer.astro';
+import { globalDictionary } from '../i18n/dictionary';
 
+const { pathname } = Astro.url;
+let lang = defaultLang;
+
+if (pathname.startsWith('/gl')) {
+  lang = 'gl';
+} else if (pathname.startsWith('/en')) {
+  lang = 'en';
+}
+
+const dictionary = getTranslations(lang, globalDictionary);
+const dictionary404 = getTranslations(lang, pageNotFoundContent);
 ---
-<LayoutBase>
-  <link slot='section-css' rel='stylesheet' href='/src/styles/index.css' />
-	<LanguagePicker slot='language-picker' activeSection='-1' />
-  <h1>Ups... 👀</h1>
-  <h2>Parece que... 404 not found</h2>
-</LayoutBase>
+<script>
+	import { handleTheme } from '../utils/handlerTheme.ts';
+	handleTheme();
+</script>
+
+<html data-theme='dark'>
+	<head>
+		<meta charset='utf-8' />
+		<link rel='preload' as='image' href='/images/custom-dark-background.svg' />
+		<link rel='preload' as='image' href='/images/custom-light-background.svg' />
+		<link rel='icon' type='image/svg+xml' href='/images/portraitFront.png' />
+		<link rel='stylesheet' href='/src/styles/globals.css' />
+    <link rel='stylesheet' href='/src/styles/404.css' />
+		<meta name='viewport' content='width=device-width' />
+		<meta name='generator' content={Astro.generator} />
+    <meta name='description' content={dictionary('head.description')}>
+    <title>{dictionary('head.title')}</title>
+	</head>
+	<body>
+    <main slot='section-content'>
+      <h1>{dictionary404('title')}</h1>
+      <img src='/images/404.svg' width='350'/>
+      <h3>{dictionary404('subtitle')}</h3>
+      <a class='link-home' href=`/${lang}`>{dictionary404('back-home-text')}</a>
+		  <Footer githubUsername='miguellrp' />
+    </main>
+	</body>
+</html>

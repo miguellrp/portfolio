@@ -1,0 +1,20 @@
+main {
+  height: 100vh;
+  padding: unset !important;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.link-home {
+  margin-top: 30px;
+  border: 2px solid var(--secondary-color);
+  padding: 10px;
+  font-weight: bold;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
+}

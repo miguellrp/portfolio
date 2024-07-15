@@ -1,4 +1,5 @@
 ---
+import ImageTooltip from '../../components/ImageTooltip.astro';
 import { getLangFromURL } from '../../i18n/util';
 import LayoutContact from '../../layouts/LayoutContact.astro';
 
@@ -6,16 +7,19 @@ const lang = getLangFromURL(Astro.url);
 
 const personalLinksData = [
   {
+    'description': 'Enviar mensaxe desde xestor de correo',
     'url': 'mailto:miguelangelromeropedreira@gmail.com',
     'iconPath': '/images/email-icon.svg',
     'altText': 'Símbolo dun sobre pechado'
   },
   {
+    'description': 'Perfil personal de LinkedIn',
     'url': 'https://www.linkedin.com/in/miguellrp/',
     'iconPath': '/images/linkeding-icon.svg',
-    'altText': 'Logo da web Linkedin'
+    'altText': 'Logo da web LinkedIn'
   },
   {
+    'description': 'Perfil personal de GitHub',
     'url': 'https://github.com/miguellrp',
     'iconPath': '/images/github-icon.svg',
     'altText': 'Logo da web GitHub'
@@ -28,14 +32,14 @@ const personalLinksData = [
   <label slot='label-email' for='email'>Correo electrónico</label>
   <label slot='label-message' for='message'>Mensaxe</label>
   <input slot='input-submit' type='submit' name='contact-form' value='Enviar' />
-  <ul slot='other-contact-icons' class='other-contact-icons'>
+  <section slot='other-contact-icons' class='other-contact-icons'>
     {personalLinksData.map((personalLink) => (
-      <li>
-        <a href={personalLink.url} target='_blank'>
-          <img src={personalLink.iconPath} alt={personalLink.altText} />
-        </a>
-      </li>
+      <ImageTooltip
+        srcImage={personalLink.iconPath}
+        altImage={personalLink.altText}
+        tooltipText={personalLink.description}
+        urlLink={personalLink.url}>
+      </ImageTooltip>
     ))}
-
-  </ul>
+  </section>
 </LayoutContact>

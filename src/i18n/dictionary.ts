@@ -134,3 +134,19 @@ export const altTextsSkillIcons = {
     'astro': 'Astro logo'
   }
 }
+
+export const pageNotFoundContent = {
+  es: {
+    'title': 'Ups...',
+    'subtitle': 'Parece que esa página a la que intentabas acceder no existe',
+    'back-home-text': 'Volver a INICIO',
+  },
+  gl: {
+    'subtitle': 'Parece que esa páxina á que intentabas acceder non existe',
+  },
+  en: {
+    'title': 'Oops...',
+    'subtitle': 'It seems that the page you were trying to access does not exist',
+    'back-home-text': 'Return to HOME',
+  }
+}

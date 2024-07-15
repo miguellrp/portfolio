@@ -1,8 +1,8 @@
 ---
-import { globalDictionary } from '../i18n/dictionary';
+import { defaultLang, globalDictionary } from '../i18n/dictionary';
 import { getLangFromURL, getTranslations } from '../i18n/util.ts';
 
-const lang = getLangFromURL(Astro.url);
+const lang = getLangFromURL(Astro.url) || defaultLang;
 const dictionary = getTranslations(lang, globalDictionary);
 const { githubUsername } = Astro.props;
 ---
