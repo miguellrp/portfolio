@@ -4,12 +4,12 @@ import { globalDictionary } from '../i18n/dictionary';
 import { getLangFromURL, getTranslations } from '../i18n/util.ts';
 import LanguagePicker from '../components/LanguagePicker.astro';
 import NavBar from '../components/NavBar.astro';
+import '/src/styles/education.css';
 
 const lang = getLangFromURL(Astro.url);
 const dictionary = getTranslations(lang, globalDictionary);
 ---
 <LayoutBase>
-	<link slot='head-section-css' rel='stylesheet' type='text/css' href='../src/styles/education.css' />
 	<meta slot='head-description' name='description' content={dictionary('head.description')}>
 	<title slot='head-title'>{dictionary('head.title')}</title>
   <LanguagePicker slot='language-picker' activeSection='1' />

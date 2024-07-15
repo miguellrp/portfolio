@@ -6,6 +6,7 @@ import LanguagePicker from '../components/LanguagePicker.astro';
 import NavBar from '../components/NavBar.astro';
 import ProjectPreview from '../components/ProjectPreview.astro';
 import Util from '../utils/Util';
+import '/src/styles/projects.css';
 
 const lang = getLangFromURL(Astro.url);
 const dictionary = getTranslations(lang, globalDictionary);
@@ -60,7 +61,6 @@ const projects = [
 ];
 ---
 <LayoutBase>
-	<link slot='head-section-css' rel='stylesheet' type='text/css' href='../src/styles/projects.css' />
 	<meta slot='head-description' name='description' content={dictionary('head.description')}>
 	<title slot='head-title'>{dictionary('head.title')}</title>
   <LanguagePicker slot='language-picker' activeSection='2' />
