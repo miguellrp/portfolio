@@ -6,11 +6,11 @@ import '/src/styles/globals.css';
 ---
 <script>
 	import { handleTheme, handleToggleClick, setVisibilityIcons } from '../utils/handlerTheme.ts';
-	
 	handleTheme();
-	document.addEventListener('astro:after-swap', handleTheme);
-	document.addEventListener('astro:after-swap', setVisibilityIcons);
-  document.addEventListener('astro:after-swap', () => {
+
+  document.addEventListener('astro:page-load', () => {
+		handleTheme();
+		setVisibilityIcons();
 		document.getElementById('theme-switcher').addEventListener('click', handleToggleClick);
 	});
 </script>

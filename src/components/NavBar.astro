@@ -18,13 +18,13 @@ const contactSection = dictionary('navbar.contact') as string;
   }
   nav {
     display: flex;
-    flex-direction: row;
-    column-gap: 20px;
+    flex-direction: column;
+    row-gap: 20px;
     justify-content: center;
     align-items: center;
-
-    padding: 10px;
     background-color: var(--secondary-color);
+    padding: 20px 0;
+    min-width: 150px;
 
     & a {
       color: var(--primary-color);
@@ -34,6 +34,14 @@ const contactSection = dictionary('navbar.contact') as string;
     & a[data-active] {
       font-weight: bold;
       color: var(--active-section-color);
+    }
+  }
+
+  @media (min-width: 450px) {
+    nav {
+      flex-direction: row;
+      column-gap: 20px;
+      padding: 10px;
     }
   }
 </style>

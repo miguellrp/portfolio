@@ -32,27 +32,36 @@ html[data-theme="dark"] {
 
   background-image: url("/images/custom-dark-background.svg");
 }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* Asegúrate de que no haya desbordamiento horizontal */
+}
 
 * {
   margin: unset;
   padding: unset;
-
+  max-width: 100%;
   scrollbar-color: var(--primary-color) var(--background-color);
   scrollbar-width: auto;
-
   font-family: Dogica;
   font-size: 13px;
+  line-height: 2rem;
 }
 
 body {
   color: var(--primary-color);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
 
   & .options-group {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-
     margin: 10px 13px 15px 13px;
   }
 
@@ -62,12 +71,17 @@ body {
     align-items: center;
     flex-direction: column;
     padding-bottom: 30px;
-  
+
     & h1, & h2, & h3, & p {
       text-align: center;
       text-wrap: balance;
+      margin: 0 10px;
     }
-    
+
+    & h1, & h2, & h3 {
+      line-height: 3.5rem;
+    }
+
     & #section-navigator {
       margin: 10px auto 15px auto;
     }
@@ -101,7 +115,7 @@ button, input[type='submit'] {
   outline: none;
   border: 4px outset var(--secondary-color);
   background-color: var(--button-background-color);
-  padding: 7px;
+  padding: 4px 7px;
 
   font-weight: bold;
   cursor: pointer;

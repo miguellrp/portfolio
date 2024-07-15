@@ -3,6 +3,8 @@ import { defaultLang, pageNotFoundContent } from '../i18n/dictionary';
 import { getTranslations } from '../i18n/util';
 import Footer from '../components/Footer.astro';
 import { globalDictionary } from '../i18n/dictionary';
+import '/src/styles/globals.css';
+import '/src/styles/404.css';
 
 const { pathname } = Astro.url;
 let lang = defaultLang;
@@ -27,8 +29,6 @@ const dictionary404 = getTranslations(lang, pageNotFoundContent);
 		<link rel='preload' as='image' href='/images/custom-dark-background.svg' />
 		<link rel='preload' as='image' href='/images/custom-light-background.svg' />
 		<link rel='icon' type='image/svg+xml' href='/images/portraitFront.png' />
-		<link rel='stylesheet' type='text/css' href='../src/styles/globals.css' />
-    <link rel='stylesheet' type='text/css' href='../src/styles/404.css' />
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
     <meta name='description' content={dictionary('head.description')}>

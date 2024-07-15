@@ -24,7 +24,7 @@ const { projectName, srcPreview, altPreview, githubRepository, webLink, leftStic
       }
 
       &:hover .options-project {
-        opacity: 1;
+        display: flex !important;
       }
     }
     
@@ -59,15 +59,12 @@ const { projectName, srcPreview, altPreview, githubRepository, webLink, leftStic
       top: var(--screen-top);
       left: var(--screen-left);
 
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       row-gap: 7px;
       z-index: 4;
-
-      transition: .3s ease-out;
-      opacity: 0;
     }
   }
 
@@ -91,7 +88,23 @@ const { projectName, srcPreview, altPreview, githubRepository, webLink, leftStic
     }
   }
 </style>
+<script>
+  const computers = document.querySelectorAll('.computer-container');
+  computers.forEach((computer) => {
+    const optionsProject = computer.querySelector('.options-project') as HTMLElement;
+    
+    computer.addEventListener('touchstart', () => {
+      // Sets certain delay-time to allow mobile-user first tap and then see allowed options: 
+      setTimeout(() => {
+        optionsProject.style.display = 'flex';
+      }, 10);
 
+      setTimeout(() => {
+        optionsProject.style.display = 'none';
+      }, 5000);
+    });
+  })
+</script>
 <div class='project-preview'>
   <p>{projectName}</p>
   <div class='computer-container'>

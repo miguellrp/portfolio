@@ -28,10 +28,21 @@ const personalLinksData = [
 ---
 
 <LayoutContact>
-  <label slot='label-name' for='name'>Name</label>
-  <label slot='label-email' for='email'>E-mail</label>
-  <label slot='label-message' for='message'>Message</label>
-  <input slot='input-submit' type='submit' name='contact-form' value='Send' />
+  <form slot='contact-form' name='contact-form' data-netlify='true'>
+    <div class='label-input'>
+      <label for='name'>Name</label>
+      <input type='text' name='name' id='name' maxlength='60' required />
+    </div>
+    <div class='label-input'>
+      <label for='email'>E-mail</label>
+      <input type='email' name='email' id='email' maxlength='120' required />
+    </div>
+    <div class='label-input'>
+      <label for='message'>Message</label>
+      <textarea name='message' id='message' maxlength='5000' required />
+    </div>
+    <input type='submit' name='contact-form' value='Send' />
+  </form>
   <section slot='other-contact-icons' class='other-contact-icons'>
     {personalLinksData.map((personalLink) => (
       <ImageTooltip

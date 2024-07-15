@@ -18,6 +18,7 @@ const isButton = urlLink !== undefined;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
+  max-width: unset;
   
   text-align: center;
   padding: 7px;
@@ -31,7 +32,7 @@ const isButton = urlLink !== undefined;
 
 .pointer {
   & .tooltip-text {
-    width: 150px;
+    min-width: fit-content;
   }
 }
 
