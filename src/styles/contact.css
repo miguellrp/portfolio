@@ -72,6 +72,19 @@ html[data-theme='dark'] {
       scrollbar-width: thin !important;
       scrollbar-color: var(--form-background-color) transparent !important;
     }
+
+    & #result {
+      width: -moz-fit-content;
+      width: fit-content;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+
+      & img {
+        width: 64px;
+      }
+    }
   }
 }
 
@@ -85,9 +98,15 @@ html[data-theme='dark'] {
   width: 100%;
 
   & button {
-    background-color: transparent;
+    background-color: unset;
     border: unset;
     outline: unset;
+
+    &:active {
+      background-color: unset;
+      border: unset;
+      outline: unset;
+    }
   }
 }
 

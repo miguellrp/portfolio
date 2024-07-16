@@ -17,11 +17,111 @@ const dictionary = getTranslations(lang, globalDictionary);
 	<main slot='section-content'>
 		<NavBar language={lang} activeSection='3'/>
 		<h1>{dictionary('contact.title')}</h1>
-		<div class='contact-content'>
+		<div class='contact-content' data-lang={lang}>
 			<section class='form-content'>
-				<slot name='contact-form' />
+				<form slot='contact-form' id='contact-form' method='POST'>
+					<input type="hidden" name="access_key" value='b2bbc141-cb90-4cca-b0a6-548c9868cd15'>
+					<div class='label-input'>
+						<slot name='label-name' />
+						<input type='text' name='name' id='name' maxlength='60' required />
+					</div>
+					<div class='label-input'>
+						<slot name='label-email' />
+						<input type='email' name='email' id='email' maxlength='120' required />
+					</div>
+					<div class='label-input'>
+						<slot name='label-message' />
+						<textarea name='message' id='message' maxlength='5000' required />
+					</div>
+					<div id="result">
+					</div>
+					<slot name='input-submit' />
+				</form>
 			</section>
 			<slot name='other-contact-icons' />
 		</div>
 	</main>
 </LayoutBase>
+<script>
+	const contactContent = document.querySelector('.contact-content') as HTMLElement;
+	const lang = contactContent.dataset.lang;
+
+	function getStatusText(status: string) {
+		const messages = {
+			sending: {
+				es: 'Enviando...',
+				gl: 'Enviando...',
+				en: 'Sending...',
+			},
+			ok: {
+				es: '¡Mensaje enviado con éxito!',
+				gl: '¡Mensaxe enviada con éxito!',
+				en: 'Message sent successfully!'
+			},
+			error: {
+				es: '¡Algo salió mal!',
+				gl: 'Algo saíu mal!',
+				en: 'Something went wrong!'
+			}
+		};
+		return messages[status][lang] || messages[status].en;
+	}
+
+  function initializeForm() {
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const result = document.getElementById('result') as HTMLElement;
+    
+    if (!form || !result) return;
+
+    result.innerHTML = `
+      <img src='/images/loader.gif' />
+      <p>${getStatusText('sending')}</p>
+    `;
+    const imgOk = new Image();
+    imgOk.src = '/images/loader-ok.gif';
+
+    form.addEventListener('submit', function(e) {
+      const formData = new FormData(form);
+      e.preventDefault();
+
+      const object = Object.fromEntries(formData);
+      const json = JSON.stringify(object);
+
+      result.style.display = 'flex';
+
+      fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: json
+      })
+      .then(async (response) => {
+        let json = await response.json();
+        if (response.status == 200) {
+          const textOk = document.createElement('p');
+          textOk.textContent = getStatusText('ok');
+          result.innerHTML = '';
+          result.append(imgOk);
+          result.append(textOk);
+        } else {
+          console.log(response);
+          result.innerHTML = json.message;
+        }
+      })
+      .catch(error => {
+        console.log(error);
+        result.innerHTML = getStatusText('error');
+      })
+      .then(function() {
+        setTimeout(() => {
+          form.reset();
+        }, 3000);
+      });
+    });
+  }
+
+  document.addEventListener('astro:after-swap', initializeForm);
+  document.addEventListener('DOMContentLoaded', initializeForm);
+</script>

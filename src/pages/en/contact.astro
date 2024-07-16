@@ -1,25 +1,18 @@
 ---
-import ImageTooltip from '../../components/ImageTooltip.astro';
-import { getLangFromURL } from '../../i18n/util';
 import LayoutContact from '../../layouts/LayoutContact.astro';
-
-const lang = getLangFromURL(Astro.url);
 
 const personalLinksData = [
   {
-    'description': 'Send message from mail manager',
     'url': 'mailto:miguelangelromeropedreira@gmail.com',
     'iconPath': '/images/email-icon.svg',
     'altText': 'Symbol of a closed envelope'
   },
   {
-    'description': 'Personal LinkedIn profile',
     'url': 'https://www.linkedin.com/in/miguellrp/',
     'iconPath': '/images/linkeding-icon.svg',
     'altText': 'LinkedIn website logo'
   },
   {
-    'description': 'Personal GitHub profile',
     'url': 'https://github.com/miguellrp',
     'iconPath': '/images/github-icon.svg',
     'altText': 'GitHub website logo'
@@ -28,29 +21,15 @@ const personalLinksData = [
 ---
 
 <LayoutContact>
-  <form slot='contact-form' name='contact-form' data-netlify='true'>
-    <div class='label-input'>
-      <label for='name'>Name</label>
-      <input type='text' name='name' id='name' maxlength='60' required />
-    </div>
-    <div class='label-input'>
-      <label for='email'>E-mail</label>
-      <input type='email' name='email' id='email' maxlength='120' required />
-    </div>
-    <div class='label-input'>
-      <label for='message'>Message</label>
-      <textarea name='message' id='message' maxlength='5000' required />
-    </div>
-    <input type='submit' name='contact-form' value='Send' />
-  </form>
+  <label slot='label-name' for='name'>Name</label>
+  <label slot='label-email' for='email'>E-mail</label>
+  <label slot='label-message' for='message'>Message</label>
+  <input slot='input-submit' type='submit' name='contact-form' value='Send' />
   <section slot='other-contact-icons' class='other-contact-icons'>
     {personalLinksData.map((personalLink) => (
-      <ImageTooltip
-        srcImage={personalLink.iconPath}
-        altImage={personalLink.altText}
-        tooltipText={personalLink.description}
-        urlLink={personalLink.url}>
-      </ImageTooltip>
+      <button onclick={`window.open('${personalLink.url}', '_blank')`}>
+        <img src={personalLink.iconPath} alt={personalLink.altText} />
+      </button>
     ))}
   </section>
 </LayoutContact>

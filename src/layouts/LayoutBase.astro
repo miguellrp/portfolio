@@ -1,5 +1,5 @@
 ---
-import { ViewTransitions } from 'astro:transitions';
+import { fade, ViewTransitions } from 'astro:transitions';
 import ThemeIcon from '../components/ThemeIcon.astro';
 import Footer from '../components/Footer.astro';
 import '/src/styles/globals.css';
@@ -32,7 +32,7 @@ import '/src/styles/globals.css';
 			<slot name='language-picker' />
 			<ThemeIcon />
 		</div>
-		<slot name='section-content' />
+		<slot name='section-content' transition:animate={fade({duration: '.5s'})}/>
 		<Footer githubUsername='miguellrp' />
 	</body>
 </html>

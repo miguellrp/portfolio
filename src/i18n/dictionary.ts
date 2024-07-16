@@ -1,5 +1,3 @@
-import Util from '../utils/Util';
-
 // Dictionary interface
 export type Dictionary = {
   [lang: string]: {
@@ -22,13 +20,13 @@ export const globalDictionary = {
     'head.title': 'Miguel Romero | Portfolio',
 
     // NAVBAR
+    'navbar.404': '404',
     'navbar.home': 'Inicio',
     'navbar.education': 'Formación',
     'navbar.projects': 'Proyectos',
     'navbar.contact': 'Contacto',
 
     // HOME
-    'navbar.404': '404',
     'home.title': 'Hola, soy Miguel Romero',
     'home.aboutMe': 'Soy un programador web aficionado a buscar armonías de colores, los <div> bien centrados, los píxeles (cuanto más grandes mejor) y las consultas con JOINS facilitos',
     'home.portraitAltA': 'Parte A de mi retrato en la que se ve mi rostro dibujado en estilo \'cartoon\' dentro de un círculo delimitado con un borde grueso de color violeta con un fondo sólido de un color más rosáceo',
