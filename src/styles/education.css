@@ -1,9 +1,4 @@
-html[data-theme='light'] {
-  --degree-name-color: #ad1e59;
-  --study-center-color: color-mix(in srgb, var(--secondary-color), #000 5%);
-}
-
-html[data-theme='dark'] {
+:root {
   --degree-name-color: #fff;
   --study-center-color: color-mix(in srgb, var(--secondary-color), #fff 35%);
 }

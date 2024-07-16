@@ -1,14 +1,6 @@
 :root {
   --input-foreground-color: #502b49;
   --input-background-color: #f2d2fe;
-}
-
-html[data-theme='light'] {
-  --form-background-color: #d57df8;
-  --input-active-border-color: #a214da;
-}
-
-html[data-theme='dark'] {
   --form-background-color: #783f8b;
   --input-active-border-color: #e45cff;
 }

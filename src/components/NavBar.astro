@@ -1,6 +1,7 @@
 ---
 import { globalDictionary } from '../i18n/dictionary';
 import { getLangFromURL, getTranslations, getPagePath } from '../i18n/util.ts';
+import LanguagePicker from './LanguagePicker.astro';
 
 const lang = getLangFromURL(Astro.url);
 const dictionary = getTranslations(lang, globalDictionary);
@@ -23,7 +24,7 @@ const contactSection = dictionary('navbar.contact') as string;
     justify-content: center;
     align-items: center;
     background-color: var(--secondary-color);
-    padding: 20px 0;
+    padding: 5px 0 20px 0;
     min-width: 150px;
 
     & a {
@@ -37,7 +38,7 @@ const contactSection = dictionary('navbar.contact') as string;
     }
   }
 
-  @media (min-width: 450px) {
+  @media (min-width: 550px) {
     nav {
       flex-direction: row;
       column-gap: 20px;
@@ -47,6 +48,7 @@ const contactSection = dictionary('navbar.contact') as string;
 </style>
 
 <nav id='section-navigator'>
+  <LanguagePicker activeSection={activeSection} />
   <a data-active={activeSection == 0} href={getPagePath(language, homeSection)}>{homeSection}</a>
   <a data-active={activeSection == 1} href={getPagePath(language, educationSection)}>{educationSection}</a>
   <a data-active={activeSection == 2} href={getPagePath(language, projectsSection)}>{projectsSection}</a>

@@ -1,21 +1,10 @@
 ---
-import { fade, ViewTransitions } from 'astro:transitions';
-import ThemeIcon from '../components/ThemeIcon.astro';
+import { ViewTransitions } from 'astro:transitions';
 import Footer from '../components/Footer.astro';
 import '/src/styles/globals.css';
 ---
-<script>
-	import { handleTheme, handleToggleClick, setVisibilityIcons } from '../utils/handlerTheme.ts';
-	handleTheme();
 
-  document.addEventListener('astro:page-load', () => {
-		handleTheme();
-		setVisibilityIcons();
-		document.getElementById('theme-switcher').addEventListener('click', handleToggleClick);
-	});
-</script>
-
-<html data-theme='dark'>
+<html>
 	<head>
 		<meta charset='utf-8' />
 		<link rel='icon' type='image/svg+xml' href='/images/portraitFront.png' />
@@ -26,11 +15,7 @@ import '/src/styles/globals.css';
 		<ViewTransitions />
 	</head>
 	<body>
-		<div class='options-group'>
-			<slot name='language-picker' />
-			<ThemeIcon />
-		</div>
-		<slot name='section-content' transition:animate={fade({duration: '.5s'})}/>
+		<slot name='section-content' />
 		<Footer githubUsername='miguellrp' />
 	</body>
 </html>
