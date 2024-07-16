@@ -43,30 +43,6 @@ const dictionary = getTranslations(lang, globalDictionary);
 	</main>
 </LayoutBase>
 <script>
-	const contactContent = document.querySelector('.contact-content') as HTMLElement;
-	const lang = contactContent.dataset.lang;
-
-	function getStatusText(status: string) {
-		const messages = {
-			sending: {
-				es: 'Enviando...',
-				gl: 'Enviando...',
-				en: 'Sending...',
-			},
-			ok: {
-				es: '¡Mensaje enviado con éxito!',
-				gl: '¡Mensaxe enviada con éxito!',
-				en: 'Message sent successfully!'
-			},
-			error: {
-				es: '¡Algo salió mal!',
-				gl: 'Algo saíu mal!',
-				en: 'Something went wrong!'
-			}
-		};
-		return messages[status][lang] || messages[status].en;
-	}
-
   function initializeForm() {
     const form = document.getElementById('contact-form') as HTMLFormElement;
     const result = document.getElementById('result') as HTMLElement;
@@ -121,6 +97,31 @@ const dictionary = getTranslations(lang, globalDictionary);
       });
     });
   }
+
+	function getStatusText(status: string) {
+		const contactContent = document.querySelector('.contact-content') as HTMLElement;
+		const lang = contactContent.dataset.lang;
+		console.log(lang);
+		const messages = {
+			sending: {
+				es: 'Enviando...',
+				gl: 'Enviando...',
+				en: 'Sending...',
+			},
+			ok: {
+				es: '¡Mensaje enviado con éxito!',
+				gl: '¡Mensaxe enviada con éxito!',
+				en: 'Message sent successfully!'
+			},
+			error: {
+				es: '¡Algo salió mal!',
+				gl: 'Algo saíu mal!',
+				en: 'Something went wrong!'
+			}
+		};
+		
+		return messages[status][lang] || messages[status].en;
+	}
 
   document.addEventListener('astro:after-swap', initializeForm);
   document.addEventListener('DOMContentLoaded', initializeForm);
